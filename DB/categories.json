@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "623b21cddc7cb16f14636ec0"
+  },
+  "title": "Cloths",
+  "slug": "cloths",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "623cbb4ba9a3315520a2f066"
+  },
+  "title": "Shoes",
+  "slug": "shoes",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "623cbba5a9a3315520a2f069"
+  },
+  "title": "Googles",
+  "slug": "googles",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "623cbbe2a9a3315520a2f06b"
+  },
+  "title": "Watches",
+  "slug": "watches",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "623cbbeda9a3315520a2f06c"
+  },
+  "title": "Other",
+  "slug": "other",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "623cbbf7a9a3315520a2f06d"
+  },
+  "title": "Soft-Drink",
+  "slug": "soft-drink",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "623cbc05a9a3315520a2f06e"
+  },
+  "title": "Painting",
+  "slug": "painting",
+  "__v": 0
+}]
