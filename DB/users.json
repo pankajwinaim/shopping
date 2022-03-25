@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "623b1ffab119a36e5874a3c5"
+  },
+  "name": "pankaj",
+  "email": "p@p.com",
+  "username": "pankaj",
+  "password": "$2a$10$ZJA8DSTKV5MJzwQ7jybt6eGBlCi5qzcV47ex15shGnvR/1XzCVPGm",
+  "admin": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "623b21338838ab2554370c98"
+  },
+  "name": "admin",
+  "email": "admin@admin.com",
+  "username": "admin",
+  "password": "$2a$10$FT.55.ypMfp444.TpiwWfOxDsgO/w3qktpceOguIY3ePNYjBP9DAW",
+  "admin": 1,
+  "__v": 0
+}]
