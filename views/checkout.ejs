@@ -1,95 +1,156 @@
 <% include _layouts/header %>
 
-<% if(typeof cart !== "undefined") { %>
+    <% if(typeof cart !=="undefined" ) { %>
+        <div class=" bg-light px-2 py-1">
+            <a class="clearcart btn btn-danger float-end " href="/cart/clear">Clear Cart <i class="fa fa-trash"
+                    aria-hidden="true"></i></a>
+            <h1 class="page-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My Cart </h1>
+        </div>
 
-    <h1 class="page-title">My Cart</h1>
-    <table class="table table-striped alignmiddle">
-    <tr>
-        <th>Image</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th></th>
-        <th>SubTotal</th>
-    </tr>
-    
-    <% var total = 0; %>
-    <% cart.forEach(function(product){%>
-        <% var sub= parseFloat(product.qt *product.price).toFixed(2) %>
-        <% total += +sub %>   
-        <tr>
-                <td><img class="cpi" src="<%= product.image %>" alt=""></td>
-                <td><%= product.title %></td>
-                <td><%= product.price %></td>
-                <td><%= product.qt %></td>
-                <td>
-                    <a href="/cart/update/<%= product.title %>?action=add">+</a>&nbsp;
-                    <a href="/cart/update/<%= product.title %>?action=remove">-</a>&nbsp;
-                    <a href="/cart/update/<%= product.title %>?action=clear">Clear</a>&nbsp;
-               </td>
-               <td>$<%= sub %></td>
-               </tr>
-    <% }); %>
+        <div class="row mt-5">
+            <div class="col-8">
+                <table class="table text-capitalize ">
+                    <thead>
+                        <tr>
+                            <th class="w-auto">Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
 
-    <tr>
-            <td colspan="6" align="right"><b>Total:</b>$<%= parseFloat(total).toFixed(2) %></td>
-         </tr>
-       <tr>
-           <td colspan="5" align="right">
-               <a class="clearcart btn btn-danger" href="/cart/clear">Clear Cart</a>
-            </td>
-      
-            <td colspan="5" align="right">
-                <a class="btn btn-primary buynow" href="/cart/buy">Buy Now</a>
-             </td>
-        </tr>
-       </table>
+                        </tr>
+                    </thead>
+                    <% var total=0; %>
+                        <% cart.forEach(function(product){%>
+                            <% var sub=parseFloat(product.qt *product.price).toFixed(2) %>
+                                <% total +=+sub %>
+                                    <tr>
+                                        <td class="float-start"><img class="rounded-top p-4 border"
+                                                src="<%= product.image %>" style="width:250px; height:250px;" alt="">
+                                            <p class="card-text fs-5 fw-bold px-3 float-end">
+                                                <small class="text-muted">
+                                                    <%= product.title %>
+                                                </small>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="card-text fs-5 fw-bold">
+                                                <small class="text-muted">
+                                                    $<%= product.price %>
+                                                </small>
+                                            </p>
 
-       <form class="pp" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_cart">
-        <input type="hidden" name="upload" value="1">
-        <input type="hidden" name="business" value="encryptedchitkara@gmail.com">
-        <% var num=0; %>
-        <% cart.forEach(function(p) { %>
-                <% num++ %>
-                <input type="hidden" name="item_name_<%= num %>" value="<%= p.title %>">
-                <input type="hidden" name="amount_<%= num %>" value="<%= p.price %>">
-                <input type="hidden" name="quantity_<%= num %>" value="<%= p.qty %>">
-               
-                <% }); %>
-        
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="hidden" name="amount" value="<%= total %>">
-        <input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+                                        </td>
+                                        <td>
+                                            <div class="btn-group me-2" role="group" aria-label="First group">
+                                                <a href="/cart/update/<%= product.title %>?action=remove">
+                                                    <button type="button" class="btn border-bottom">-</button>
+                                                </a>
+                                                <button type="button" class="btn border">
+                                                    <%= product.qt %>
+                                                </button>
+                                                <a href="/cart/update/<%= product.title %>?action=add"><button
+                                                        type="button" class="btn border-bottom">+</button></a>
+                                            </div>
+                                        </td>
+                                        <!-- <td>
+                                            <a href="/cart/update/<%= product.title %>?action=clear">Clear</a>&nbsp;
+                                        </td> -->
+                                        <td>$<%= sub %>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                        <tr>
+                                            <td colspan="4" align="right">
+                                                <a class="btn btn-dark buynow" href="/cart/buy">Buy Now</a>
+                                            </td>
+                                        </tr>
+                </table>
+
+            </div>
+            <div class="col-4 fs-4 border text-capitalize p-3 shadow-lg mb-5">
+                <p class="fs-2 fw-bold">Summary</p>
+                <hr class="mb-5">
+                <h6 class="card-subtitle mb-2 text-muted">Do You have any Promocode?</h6>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Input group example"
+                        aria-label="Input group example" aria-describedby="btnGroupAddon">
+                    <div class="input-group-text btn btn-dark" id="btnGroupAddon"><i class="fa fa-chevron-right"
+                            aria-hidden="true"></i></div>
+                </div>
+                <hr class="mb-5 mt-3">
+                <table class="table">
+                    <tr class=" border-bottom">
+                        <td class="text-uppercase fs-4 font-monospace">Subtotal:</td>
+                        <td class="float-end">$<%= parseFloat(total).toFixed(2) %>
+                                </th>
+                    </tr>
+                    <tr class=" border-bottom">
+                        <td class="text-uppercase fs-4 font-monospace">Shipping:</td>
+                        <td class="float-end">$0.00</td>
+                    </tr>
+                    <tr class=" border-bottom">
+                        <td class="text-uppercase fs-4 font-monospace">Tax:</td>
+                        <td class="float-end">$0.00</td>
+                    </tr>
+                </table>
+                <table class="table border-bottom fw-bold text-success mb-5">
+                    <tr class="">
+                        <td class="text-uppercase fs-4 font-monospace">Estimated Total:</td>
+                        <td class="float-end">$<%= parseFloat(total).toFixed(2) %>
+                        </td>
+                    </tr>
+                </table>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-dark text-uppercase" type="button">Buy Now <i class="fa fa-check"
+                            aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <form class="pp" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            <input type="hidden" name="business" value="encryptedchitkara@gmail.com">
+            <% var num=0; %>
+                <% cart.forEach(function(p) { %>
+                    <% num++ %>
+                        <input type="hidden" name="item_name_<%= num %>" value="<%= p.title %>">
+                        <input type="hidden" name="amount_<%= num %>" value="<%= p.price %>">
+                        <input type="hidden" name="quantity_<%= num %>" value="<%= p.qty %>">
+                        <% }); %>
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="amount" value="<%= total %>">
+                            <input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit"
+                                alt="Make payments with PayPal - it's fast, free and secure!">
         </form>
-    
-        <% } 
-    else { %>
-      
-        <h3 class="text-center">Your cart is empty</h3>
-       
-      <% } %>
 
-<script>
-$(function(){
-    $('a.clearcart').on('click',function(){
-        if(!confirm('Clear Cart'))
-        return false
-    });
+        <% } else { %>
 
-    $('a.buynow').on('click',function(e){
-      
-        e.preventDefault();
-        $.get('/cart/buynow',function(){
-            $('form.pp input[type=image]').click();
-            $('.loaderbg').show();
-        });
-    
-    });
+            <h3 class="text-center">Your cart is empty</h3>
 
+            <% } %>
+
+                <script>
+                    $(function () {
+                        $('a.clearcart').on('click', function () {
+                            if (!confirm('Clear Cart'))
+                                return false
+                        });
+
+                        $('a.buynow').on('click', function (e) {
+
+                            e.preventDefault();
+                            $.get('/cart/buynow', function () {
+                                $('form.pp input[type=image]').click();
+                                $('.loaderbg').show();
+                            });
+
+                        });
 
 
-});
-</script>
 
-<% include _layouts/footer %>
+                    });
+                </script>
+
+                <% include _layouts/footer %>
