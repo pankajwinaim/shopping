@@ -44,7 +44,7 @@ router.get('/:category', async function (req, res) {
                 console.log("error in router.get('/:category) in products.js " + err);
             }
             res.render('cat_products', {
-                title: 'aeshu',
+                title: 'Category Product Listing',
                 products: products
             });
 
