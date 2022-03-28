@@ -7,7 +7,6 @@ var app = express();
 var expressValidator = require('express-validator');
 var fileUpload = require('express-fileupload');
 var passport = require('passport');
-
 var cookieParser = require('cookie-parser')
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -102,6 +101,7 @@ app.use('/admin/products', adminProducts);
 app.use('/products', products);
 app.use('/cart', cart);
 app.use('/users', users);
+app.use('/pages', pages);
 app.use('/', products);
 
 

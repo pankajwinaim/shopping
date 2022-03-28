@@ -32,6 +32,8 @@
 
     .max-display-size {
       max-width: 2400px;
+      min-height: 80vh;
+      z-index: 999;
       margin: auto;
       padding: 0px 30px;
     }
@@ -60,7 +62,7 @@
                   <%= page.title %>
                 </a></li>
               <% } else { %>
-                <li class="nav-item"><a class="nav-link" href=" /<%=page.slug %>">
+                <li class="nav-item"><a class="nav-link" href=" /pages/<%=page.slug %>">
                     <%= page.title %>
                   </a></li>
                 <% } %>
@@ -89,10 +91,7 @@
                   <li class="nav-item"><a class="nav-link" href="/admin/pages">Admin Area</a></li>
                   <% } %>
         </ul>
-        <!-- <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-primary" type="button">Search</button>
-        </form> -->
+
       </div>
     </div>
   </nav>

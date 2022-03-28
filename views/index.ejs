@@ -1,4 +1,9 @@
 <% include _layouts/header %>
-<%- content %>
+    <div class=" bg-light px-2 py-2 mt-3 mb-3">
+        <h1 class="page-title text-capitalize">
+            <%- name %>
+        </h1>
+    </div>
 
-<% include _layouts/footer %>
+    <%- content %>
+        <% include _layouts/footer %>
